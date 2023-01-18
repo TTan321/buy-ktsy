@@ -1,5 +1,4 @@
 from crypt import methods
-from statistics import quantiles
 from flask import Blueprint, jsonify, request
 from ..forms.shoppingcart_form import ShoppingCartForm,EditShoppingCartForm
 from ..models import db, Cart
