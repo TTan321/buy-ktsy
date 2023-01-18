@@ -1,11 +1,15 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 class Image(db.Model):
     __tablename__ = "images"
+
+    if environment == "production":
+      __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, nullable=False, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=True)
-    review_id = db.Column(db.Integer, db.ForeignKey('reviews.id'), nullable=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('products.id')), nullable=True)
+    review_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('reviews.id')), nullable=True)
     main_image = db.Column(db.Boolean, nullable=False)
     image_url = db.Column(db.String, nullable=False)
     users = db.relationship('User', back_populates = 'images')
