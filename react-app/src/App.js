@@ -19,7 +19,7 @@ import EditProductForm from './components/products/EditProductForm';
 import UserProducts from './components/products/UserProducts';
 import SearchProducts from './components/products/searchProducts';
 import ReactGA from 'react-ga';
-import RouteChangeTracker from './RouteChangeTracker'
+import RouteChangeTracker from './components/RouteChangeTracker'
 
 
 function App() {
