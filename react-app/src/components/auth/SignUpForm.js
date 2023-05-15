@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import './SignUpForm.css'
 
-const SignUpForm = ({ setShowSignUpModal }) => {
+const SignUpForm = ({ ReactGA, setShowSignUpModal }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [firstname, setFirstname] = useState('');
@@ -50,6 +50,11 @@ const SignUpForm = ({ setShowSignUpModal }) => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
+  ReactGA.event({
+    category: 'User',
+    action: 'Created an Account'
+  });
 
   return (
     <div className='signup-form-container'>

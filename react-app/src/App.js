@@ -12,16 +12,20 @@ import Products from './components/products/getProducts';
 import CreateProductForm from './components/products/productForm';
 import ProductDetail from './components/products/productDetail';
 import { ReviewForm } from './components/reviews/reviewform';
-import {UpdateReviewForm} from './components/reviews/updateReviewForm';
+import { UpdateReviewForm } from './components/reviews/updateReviewForm';
 import CartForm from './components/ShoppingCart/CartForm';
 import GetCartItems from './components/ShoppingCart/ShoppingCart';
 import EditProductForm from './components/products/EditProductForm';
 import UserProducts from './components/products/UserProducts';
 import SearchProducts from './components/products/searchProducts';
-
+import ReactGA from 'react-ga';
+import RouteChangeTracker from './RouteChangeTracker'
 
 
 function App() {
+  const TRACKING_ID = "G-9DGC3CQ2XG";
+  ReactGA.initialize(TRACKING_ID);
+
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
@@ -38,7 +42,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar loaded={loaded}/>
+      <RouteChangeTracker />
+      <NavBar loaded={loaded} />
       <Switch>
         <ProtectedRoute path='/products/owner' exact={true}>
           <UserProducts />
@@ -62,7 +67,7 @@ function App() {
           <SearchProducts />
         </Route>
         <ProtectedRoute path='/shopping-carts' exact={true}>
-          <GetCartItems/>
+          <GetCartItems />
         </ProtectedRoute>
         <Route path="/products/:productId" exact={true}>
           <ProductDetail />
@@ -80,7 +85,7 @@ function App() {
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
-          <SignUpForm />
+          <SignUpForm ReactGA={ReactGA} />
         </Route>
         <Route>
           <h1>Route Not Found</h1>
