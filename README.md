@@ -2,7 +2,7 @@
 
 Buy Ksty is a web application inspired by Etsy, that provides an online marketplace for unique and creative goods. Where users can sell their creative goods or they can buy and review goods made by others users.
 
-[Click here to view Buy Ktsy Live Site](https://buy-ktsy.herokuapp.com/)
+[Click here to view Buy Ktsy Live Site](https://buyktsy.onrender.com/)
 
 This Project is built with:
 * Python
