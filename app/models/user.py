@@ -16,10 +16,10 @@ class User(db.Model, UserMixin):
     firstname = db.Column(db.String(40), nullable=False)
     lastname = db.Column(db.String(40), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    products = db.relationship('Product', back_populates='owner', cascade='all, delete')
-    images = db.relationship('Image', back_populates='users', cascade='all, delete')
-    reviews = db.relationship('Review', back_populates='users', cascade='all, delete')
-    cart = db.relationship('Cart', back_populates='users', cascade='all, delete')
+    products = db.relationship('Product', back_populates='owner', CASCADE='all, delete')
+    images = db.relationship('Image', back_populates='users', CASCADE='all, delete')
+    reviews = db.relationship('Review', back_populates='users', CASCADE='all, delete')
+    cart = db.relationship('Cart', back_populates='users', CASCADE='all, delete')
 
     @property
     def password(self):
